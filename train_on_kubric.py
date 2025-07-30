@@ -8,9 +8,9 @@ import lightning as L
 
 
 class Lite(L.LightningModule):
-    def __init__(self, tracker):
+    def __init__(self, **args):
         super().__init__()
-        self.tracker = tracker
+        self.tracker = Tracker(args)
 
     def training_step(self, batch):
         data, *_ = batch
