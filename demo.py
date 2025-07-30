@@ -1,13 +1,12 @@
 from visualizer import read_video_from_path, Visualizer
 from predictor import Predictor
-from tracker import Tracker
 import torch
 from train_on_kubric import Lite
 
 video = read_video_from_path('assets/apple.mp4')
 video = torch.from_numpy(video).permute(0, 3, 1, 2)[None].float()
-model = Predictor(Tracker())
-pred_tracks, pred_visibilities = model(video=video, grid_size = 3)
+model = Predictor()
+pred_tracks, pred_visibilities = model.run(video=video, grid_size = 3)
 
 vis = Visualizer(save_dir="./saved_videos", pad_value=120, linewidth=3)
 vis.visualize(

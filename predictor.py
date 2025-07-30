@@ -3,15 +3,14 @@ from tracker import Tracker
 from model_utils import get_points_on_a_grid
 import torch.nn.functional as F 
 
-class Predictor(torch.nn.Module):
+class Predictor:
     def __init__(self, model=None):
-        super().__init__()
         if model is None:
             model = Tracker(resolution = (96, 128))
         self.model = model
         self.interp_shape = model.resolution
 
-    def forward(self, video, queries = None, grid_size = 0, grid_query_frame = 0):
+    def run(self, video, queries = None, grid_size = 0, grid_query_frame = 0):
         B, T, C, H, W = video.shape
 
         video = video.reshape(B * T, C, H, W)
