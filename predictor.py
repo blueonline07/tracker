@@ -6,7 +6,7 @@ import torch.nn.functional as F
 class Predictor:
     def __init__(self, model=None):
         if model is None:
-            model = Tracker(resolution = (96, 128))
+            model = Tracker()
         self.model = model
         self.interp_shape = model.resolution
 
