@@ -14,8 +14,8 @@ class Lite(L.LightningModule):
 
     def training_step(self, batch):
         data, *_ = batch
-        video = data.video[:, :16]        # shape: B, T, C, H, W → keep first 8 frames
-        queries = data.trajectory[:, :16] # shape: B, T, N, 2 → match video
+        video = data.video[:, :8]        # shape: B, T, C, H, W → keep first 8 frames
+        queries = data.trajectory[:, :8] # shape: B, T, N, 2 → match video
 
         out = torch.cat([torch.zeros_like(queries[:, 0, :, :1]), queries[:, 0]], dim=-1)
         pred_tracks, *_ = self.tracker(video, out)
