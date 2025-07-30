@@ -133,8 +133,8 @@ class TrackerBase(nn.Module):
         return time_emb.to(previous_dtype)
 
 class Tracker(TrackerBase):
-    def __init__(self, **args):
-        super(Tracker, self).__init__(**args)
+    def __init__(self):
+        super(Tracker, self).__init__()
 
     def forward(self, video, queries, iters = 4, add_space_attn = True):
         B, T, C, H, W = video.shape

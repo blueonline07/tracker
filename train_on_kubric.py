@@ -21,7 +21,6 @@ class Lite(L.LightningModule):
         pred_tracks, *_ = self.tracker(video, out)
 
         loss = torch.nn.functional.mse_loss(pred_tracks, queries)
-        self.log("train_loss", loss)
         return loss
 
     def configure_optimizers(self):
