@@ -36,7 +36,7 @@ if __name__ == "__main__":
         )
     )
     data_loader = DataLoader(dataset, collate_fn=collate_fn_train)
-    model = Lite((Tracker(resolution=(96, 128))))
+    model = Lite(Tracker(resolution=(96, 128)))
     trainer = L.Trainer(
         devices=1,
         precision="16-mixed",
