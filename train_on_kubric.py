@@ -8,9 +8,9 @@ import lightning as L
 
 
 class Lite(L.LightningModule):
-    def __init__(self, **args):
+    def __init__(self):
         super().__init__()
-        self.tracker = Tracker(args[1])
+        self.tracker = Tracker()
 
     def training_step(self, batch):
         data, *_ = batch
@@ -36,7 +36,7 @@ if __name__ == "__main__":
         )
     )
     data_loader = DataLoader(dataset, collate_fn=collate_fn_train)
-    model = Lite(resolution=(96, 128))
+    model = Lite()
     trainer = L.Trainer(
         devices=1,
         precision="16-mixed",

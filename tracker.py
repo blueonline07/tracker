@@ -36,7 +36,7 @@ class TrackerBase(nn.Module):
         num_virtual_tracks = 64,
         add_space_attn=True,
         linear_layer_for_vis_conf = True,
-        resolution = (384, 512),
+        resolution = (96, 128),
         stride = 4
     ):
         super().__init__()
